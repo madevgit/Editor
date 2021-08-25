@@ -1,0 +1,112 @@
+{
+    "en":{
+        "email":{
+            "label":"E-mail:",
+            "placeholder":"mail@gmail.com"
+        },
+        "firstname":{
+            "label":"Firstname:",
+            "placeholder":"your firstname"
+        },
+        "lastname":{
+            "label":"Lastname:",
+            "placeholder":"your lastname"
+        },
+        "tel":{
+            "label":"Phone number:",
+            "placeholder":"63 48 48 08"
+        },
+        "business":{
+            "label":"App Name / Business Name:",
+            "placeholder":"your app name our bussiness name"
+        },
+        "descriptionB":{
+            "label":"",
+            "placeholder":"describe us your business"
+        },
+        "file":{
+            "label":"identification documents:",
+            "side":"(ID card, passepoort, IFU)",
+            "placeholder":"upload files"
+        },
+        "password":{
+            "label":"Password:",
+            "placeholder":"******"
+        },
+        "passwordC":{
+            "label":"Your occupation(poste):",
+            "placeholder":"******"
+        },
+        "passwordN":{
+            "label":"New password:",
+            "placeholder":"******"
+        },
+        "object":{
+            "label":"What's your reason ?",
+            "placeholder":""
+        },
+        "Reasons":["Technical Support","Commercial case","Other"],
+        "message":{
+            "label":"",
+            "placeholder":"Explain us better"
+        },
+        "checkTerms":{
+            "label":"Are you agree with the terms of use and data utilisation ? "
+        }
+    },
+    "fr":{
+        "email":{
+            "label":"E-mail:",
+            "placeholder":"mail@gmail.com"
+        },
+        "firstname":{
+            "label":"Prénom:",
+            "placeholder":"votre prénom"
+        },
+        "lastname":{
+            "label":"Nom:",
+            "placeholder":"votre nom de famille"
+        },
+        "tel":{
+            "label":"Téléphone:",
+            "placeholder":"63 48 48 08"
+        },
+        "business":{
+            "label":"Nom de l'app / Nom de l'entreprise :",
+            "placeholder":"le nom de votre application ou votre entrepris   e"
+        },
+        "descriptionB":{
+            "label":"",
+            "placeholder":"Décrivez-nous votre activité"
+        },
+        "file":{
+            "label":"documents d'identification:",
+            "side":"(Carte d'identité, passeport, IFU)",
+            "placeholder":"charger des fichiers"
+        },
+        "password":{
+            "label":"Mot de passe:",
+            "placeholder":"******"
+        },
+        "passwordC":{
+            "label":"Votre poste:",
+            "placeholder":"******"
+        },
+        "passwordN":{
+            "label":"Nouveau mot de passe:",
+            "placeholder":"******"
+        },
+        "object":{
+            "label":"Quelle est votre raison ?",
+            "placeholder":""
+        },
+        "Reasons":["Support technique","Cas commercial","Autre"],
+        "message":{
+            "label":"",
+            "placeholder":"Expliquez-nous mieux"
+        },
+        "checkTerms":{
+            "label":"Êtes-vous d'accord avec les conditions d'utilisation et l'utilisation des données ?"
+        }
+    }
+}

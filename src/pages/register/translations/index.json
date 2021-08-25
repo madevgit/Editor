@@ -1,0 +1,14 @@
+{
+    "en":{
+        "Title0":"Login to your",
+        "Title1":"QOS",
+        "Title2":"account",
+        "passwordForgot":"Forgot password ?"
+    },
+    "fr":{
+        "Title0":"Connectez-vous à votre",
+        "Title1":"compte",
+        "Title2":"QOS",
+        "passwordForgot":"Mot de passe oublié ?"
+    }
+}

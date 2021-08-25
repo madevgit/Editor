@@ -1,0 +1,72 @@
+{
+    "en":{
+        "Links":{
+            "products":{
+                "subtitle0":"Payments",
+                "subtitle1":"Organization services",
+                "name":"Products",
+                "items":[
+                    {
+                        "title":"Online payment",
+                        "description":"Accept online bussiness payment"
+                    },
+                    {
+                        "title":"Offline payment",
+                        "description":"Accept offline bussiness payment"
+                    },
+                    {
+                        "title":"Sharable payment Link",
+                        "description":"Share your product link to accept payment"
+                    },
+                    {
+                        "title":"Digital finance",
+                        "description":"Accept online bussiness payment"
+                    }                    
+                ]
+            },
+            "company":{
+                "name":"Company",
+                "items":["About Us","Contact Us"]
+            },
+            "developers":"Developers",
+            "price":"Pricing",
+            "logInButton":"Sign In",
+            "registerButton":"Create Account"
+        }
+    },
+    "fr":{
+        "Links":{
+            "products":{
+                "subtitle0":"Paiements",
+                "subtitle1":"Services d'organisation",
+                "name":"Produits",
+                "items":[
+                    {
+                        "title":"Paiement en ligne",
+                        "description":"Accepter les paiements en ligne pour les entreprises"
+                    },
+                    {
+                        "title":"Paiement hors ligne",
+                        "description":"Accepter les paiements hors ligne pour les entreprises"
+                    },
+                    {
+                        "title":"Lien de paiement partageable",
+                        "description":"Partagez le lien de votre produit pour accepter le paiement"
+                    },
+                    {
+                        "title":"Finance digitale",
+                        "description":"Accepter les paiements en ligne pour les entreprises"
+                    }                    
+                ]
+            },
+            "company":{
+                "name":"Compagnie",
+                "items":["Qui sommes-nous ?","Contactez-nous"]
+            },
+            "developers":"Développeurs",
+            "price":"Tarification",
+            "logInButton":"Connexion",
+            "registerButton":"Créer un compte"
+        }
+    }
+}
