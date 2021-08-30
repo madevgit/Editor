@@ -1,5 +1,8 @@
 import axios from "axios";
-const baseUrl = `https://blogeditorapi.herokuapp.com`;
+const ap = false;
+const baseUrl = ap
+  ? `https://blogeditorapi.herokuapp.com`
+  : `http://localhost:8080`;
 const server = {
   login: async (data) => {
     return await axios

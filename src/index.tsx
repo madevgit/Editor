@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
@@ -12,7 +12,7 @@ ReactDOM.render(
     <LangsProvider>
       <NotificationProvider>
         <AuthProvider>
-          <Router>
+          <Router hashType="noslash">
             <App />
           </Router>
         </AuthProvider>
