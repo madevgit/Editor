@@ -29,12 +29,12 @@ export default function NotificationProvider({ children }) {
       {children}
       <div
         id="notificator"
-        className={`transition-all duration-500 flex items-center p-4 rounded-full shadow-lg border border-qosdark border-opacity-10 bg-qosgray h-20 w-80 ${
+        className={`transition-all duration-500 flex items-center p-4 rounded-lg shadow-lg border border-qosdark border-opacity-10 bg-qosgray h-20 w-80 ${
           Show ? "right-0" : "-right-full"
         } fixed top-2 z-50`}
       >
         <img className="h-8 w-8 block mr-4" src={src} alt="iconStatus" />
-        <div className="text-mmd text-qosdark text-opacity-70">
+        <div className="text-mmd overflow-auto hideScroll h-full text-qosdark text-opacity-70">
           {NotificationInfo.message}
         </div>
       </div>
