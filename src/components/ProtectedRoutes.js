@@ -7,13 +7,14 @@ import Saved from "../pages/saved";
 import { useDataContext } from "./dataContext";
 import { useAuthContext } from "./AuthContext";
 import { useEffect, useState } from "react";
+
 export default function ProtectedRoute() {
   const { Setter } = useDataContext();
   const History = useHistory();
   useEffect(() => {
-    Setter.readLastPost().then((data) => {  
-      if (data[0]) {
-        History.push(`/home/edit/${data[0]._id}`);
+    Setter.readLastPost().then((data) => {
+      if (data && data[0]) {
+        History.replace(`/home/edit/${data[0]._id}`);
       }
     });
   }, []);

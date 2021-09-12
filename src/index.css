@@ -1180,7 +1180,7 @@
   }
   input:not(.writerHeader input, input[type="checkbox"]),
   select {
-    @apply h-12 w-full mt-2 rounded-md border border-opacity-20 px-4 border-qosdark mx-auto outline-none;
+    @apply h-10 w-full mt-2 rounded border border-opacity-20 px-4 border-qosdark mx-auto outline-none;
   }
 
   .writerHeader div {

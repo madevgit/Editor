@@ -32,7 +32,7 @@ export default function RegisterPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await sleep(500);
+    await sleep(50);
     await handleAuthentication("REGISTER", User);
   }
 

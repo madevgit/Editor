@@ -27,7 +27,7 @@ export default function Published() {
     return (parseInt(page, 10) - 1) * limit;
   }
   async function getData() {
-    await sleep(500);
+    await sleep(50);
     await Setter.posts(setSkip(Page), limit, true).then((data) =>
       setData(data)
     );
@@ -62,7 +62,7 @@ function HistoryPost({ title, poster, resume, index, _id: id }) {
   const { Setter } = useDataContext();
   return (
     <div className="bg-qosgray shadow-lg w-60 rounded-md p-4">
-      <h4 className="text-mH3 opacity-70 h-14 text-center overflow-hidden">
+      <h4 className="text-mH3 opacity-70 truncate uppercase text-center overflow-hidden">
         {title}
       </h4>
       <div className="mb-4">

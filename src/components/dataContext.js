@@ -9,7 +9,9 @@ export default function DataProvider({ children }) {
   const { Authentication } = useAuthContext();
   const [Refresh, setRefresh] = useState(true);
   const LunchNotification = useNotificatContext();
+
   useEffect(() => [Refresh]);
+
   const Setter = {
     posts: async (skip, limit, published) => {
       let response = await server.readPosts(
@@ -35,12 +37,11 @@ export default function DataProvider({ children }) {
         setRefresh((prev) => !prev);
       } else {
         LunchNotification(false, response.response.data.reason);
-        console.log(response.response);
       }
     },
     readLastPost: async () => {
       let response = await server.readPost(undefined, Authentication.user._id);
-      return response.data.post;
+      if (response.data) return response.data.post;
     },
     readPost: async (idPost) => {
       let response = await server.readPost(idPost);
@@ -62,19 +63,16 @@ export default function DataProvider({ children }) {
       }
     },
     deletePost: async (idPost) => {
-      let comfirm = window.confirm("Comfirm to remove the post")
+      let comfirm = window.confirm("Comfirm to remove the post");
       if (comfirm) {
-         let response = await server.deletePost(
-           Authentication.user._id,
-           idPost
-         );
-         if (response.statusText === "OK" && response.status === 200) {
-           LunchNotification(true, response.data.message);
-           setRefresh((prev) => !prev);
-         } else {
-           LunchNotification(false, response.response.data.reason);
-           console.log(response.response);
-         }
+        let response = await server.deletePost(Authentication.user._id, idPost);
+        if (response.statusText === "OK" && response.status === 200) {
+          LunchNotification(true, response.data.message);
+          setRefresh((prev) => !prev);
+        } else {
+          LunchNotification(false, response.response.data.reason);
+          console.log(response.response);
+        }
       }
     },
   };

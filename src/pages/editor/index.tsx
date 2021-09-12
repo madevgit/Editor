@@ -120,14 +120,13 @@ export default function Publish() {
   const { promiseInProgress } = usePromiseTracker();
   const sleep = (ms: any) => new Promise((r) => setTimeout(r, ms));
 
-  async function ReadLastPost() {
-    await sleep(500);
-    await Setter.readPost(params.postId).then((data: any) => {
-      setPost(PostContentParser(data));
-    });
-  }
-
   useEffect(() => {
+    async function ReadLastPost() {
+      await sleep(10);
+      await Setter.readPost(params.postId).then((data: any) => {
+        setPost(PostContentParser(data));
+      });
+    }
     if (params.postId) {
       trackPromise(ReadLastPost());
     }
@@ -146,7 +145,6 @@ export default function Publish() {
           title: "Blog Title",
           content: initialValuePlayground,
           resume: "Make it short but significant",
-          poster: "Link of poster already put in cloud",
           category: "choose it here",
         };
   }
@@ -222,26 +220,27 @@ export default function Publish() {
         prev[e.target.name] = e.target.value;
       }
       localStorage.setItem("qosEditorHistory", JSON.stringify(prev));
-      return { ...prev };
+      return prev;
     });
   }
   async function UpdatePost(Post: any, published: boolean) {
-    await sleep(500);
+    await sleep(10);
     await Setter.updatePost({
       ...Post,
       published: published,
       content: JSON.stringify(Post.content),
     });
   }
+
   async function SavePost(Post: any, published: boolean) {
-    await sleep(500);
+    await sleep(10);
     Setter.savePost(
       {
         ...Post,
         content: JSON.stringify(Post.content),
       },
       published
-    )
+    );
   }
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -253,63 +252,13 @@ export default function Publish() {
   }
   return (
     <div>
-      <form id="Editor" onSubmit={handleSubmit}>
-        <div className="fixed right-4 p-4 rounded-lg z-50 shadow-lg -top-52 bg-qosgray mt-80">
-          <div className="mx-auto w-full md:max-w-sm">
-            <label className="block">Title</label>
-            <input
-              value={Post.title}
-              onChange={handleInputChange}
-              className=""
-              name="title"
-              type="text"
-              required
-            />
-          </div>
-          <div className="mx-auto w-full md:max-w-sm mt-5">
-            <label className="block">Category:</label>
-            <input
-              onChange={handleInputChange}
-              type="text"
-              list="categoryList"
-              name="category"
-              required
-              value={Post.category}
-            />
-            <datalist id="categoryList">
-              <option value="engineering" />
-              <option value="marketing" />
-              <option value="company" />
-            </datalist>
-          </div>
-          <div className="mx-auto w-full md:max-w-sm mt-5">
-            <label className="block">Resume:</label>
-            <textarea
-              onChange={handleInputChange}
-              maxLength={144}
-              minLength={100}
-              name="resume"
-              placeholder="make a resume or description"
-              required
-              value={Post.resume}
-            ></textarea>
-          </div>
-          <div className="mx-auto w-full md:max-w-sm mt-5">
-            <label className="block">Poster link:</label>
-            <input
-              onChange={handleInputChange}
-              type="text"
-              name="poster"
-              required
-              value={Post.poster}
-            />
-          </div>
-          <div className="mx-auto w-full md:max-w-sm mt-5">
-            <button className="text-mlg font-medium bg-opacity-80 h-10 bg-qosblue text-qosgray rounded-lg block p-1 mx-auto px-4">
-              {Update ? "Update and Publish" : "Publish"}
-            </button>
-          </div>
-        </div>
+      <form id="Editor" onSubmit={handleSubmit} encType="multipart/form-data">
+        <RightForm
+          Post={Post}
+          handleInputChange={handleInputChange}
+          Update={Update}
+          setPost={setPost}
+        />
         <DndProvider backend={HTML5Backend}>
           <Plate
             id={id}
@@ -352,6 +301,92 @@ export default function Publish() {
         </DndProvider>
       </form>
       <Loader enable={promiseInProgress} />
+    </div>
+  );
+}
+
+function RightForm({ Post, handleInputChange, Update, setPost }: any) {
+  function convertTo() {
+    let input: any = document.querySelector("#FilePost");
+    let file = input.files[0];
+    let reader = new FileReader();
+    reader.onloadend = function () {
+      let input2: any = document.querySelector("#HiddenInput");
+      input2.value = reader.result;
+      setPost((prev: any) => {
+        return { ...prev, poster: reader.result };
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+  return (
+    <div className="fixed right-4 p-4 rounded-lg z-50 shadow-md w-60 -top-52 bg-qosgray mt-80">
+      <div className="mx-auto w-full md:max-w-sm">
+        <label className="block">Title</label>
+        <input
+          value={Post.title}
+          onChange={handleInputChange}
+          className=""
+          name="title"
+          type="text"
+          required
+        />
+      </div>
+      <div className="mx-auto w-full md:max-w-sm mt-5">
+        <label className="block">Category:</label>
+        <input
+          onChange={handleInputChange}
+          type="text"
+          list="categoryList"
+          name="category"
+          required
+          value={Post.category}
+        />
+        <datalist id="categoryList">
+          <option value="engineering" />
+          <option value="marketing" />
+          <option value="company" />
+        </datalist>
+      </div>
+      <div className="mx-auto w-full md:max-w-sm mt-5">
+        <label className="block">Resume:</label>
+        <textarea
+          onChange={handleInputChange}
+          maxLength={144}
+          minLength={100}
+          name="resume"
+          placeholder="make a resume or description"
+          required
+          value={Post.resume}
+        ></textarea>
+      </div>
+      <div className="mx-auto w-full md:max-w-sm mt-5">
+        <label className="block">Poster:</label>
+        <input
+          id="FilePost"
+          type="file"
+          onChange={() => convertTo()}
+          className="border-none text-msm"
+        />
+        <input
+          onChange={handleInputChange}
+          type="hidden"
+          name="poster"
+          value={Post.poster}
+          id="HiddenInput"
+        />
+      </div>
+      <div className="mx-auto w-full md:max-w-sm mt-5">
+        <select name="lang" onChange={handleInputChange}>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>
+      <div className="mx-auto w-full md:max-w-sm mt-5">
+        <button className="text-mlg font-medium bg-opacity-80 h-10 bg-qosblue text-qosgray rounded-lg block p-1 mx-auto px-4">
+          {Update ? "Update and Publish" : "Publish"}
+        </button>
+      </div>
     </div>
   );
 }

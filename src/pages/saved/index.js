@@ -26,11 +26,12 @@ export default function Saved() {
     return (parseInt(page, 10) - 1) * limit;
   }
   async function getData() {
-    await sleep(500);
+    await sleep(50);
     await Setter.posts(setSkip(Page), limit, false).then((data) =>
       setData(data)
     );
   }
+  
   useLayoutEffect(() => {
     trackPromise(getData());
   }, [Page, Setter]);

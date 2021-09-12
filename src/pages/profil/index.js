@@ -9,11 +9,11 @@ import { useAuthContext } from "../../components/AuthContext";
 export default function ProfilPage() {
   const { Lang } = useLangContext();
   const Infos = { msg: Messages[Lang], input: InputsText[Lang] };
-  const btnMsg = buttonText[Lang];
 
   const { firstname, lastname, poste, profil, email } = JSON.parse(
     localStorage.getItem("qosToken")
   );
+
   const [newCredential, setNewCredential] = useState({
     password: "",
     Npassword: "",
@@ -26,13 +26,28 @@ export default function ProfilPage() {
     profil,
     email,
   });
+
   const { handleAuthentication } = useAuthContext();
-  useEffect(() => {});
+
+  useEffect(() => { });
+
   function handleInputChange(e) {
     setUser((prev) => {
       prev[e.target.name] = e.target.value;
       return { ...prev };
     });
+  }
+
+  function convertTo() {
+    let input = document.querySelector("#FilePost");
+    let file = input.files[0];
+    let reader = new FileReader();
+    reader.onloadend = function () {
+      setUser((prev) => {
+        return { ...prev, profil: reader.result };
+      });
+    };
+    reader.readAsDataURL(file);
   }
   function handleCredentialInputChange(e) {
     setNewCredential((prev) => {
@@ -47,7 +62,7 @@ export default function ProfilPage() {
       : handleAuthentication("UPDATE", User, credential);
   }
   return (
-    <div className="w-12/12 flex max-w-screen-lg justify-between px-4 py-4 mx-auto my-32 rounded-xl">
+    <div className="w-12/12 flex max-w-screen-xl mr-4 justify-between px-4 py-4 mx-auto mt-12 rounded-xl">
       <form
         className="w-7/12 min-w-max bg-qosgray p-8 shadow-md rounded-lg"
         onSubmit={(e) => {
@@ -105,11 +120,11 @@ export default function ProfilPage() {
                 <label className="block">Profil:</label>{" "}
               </div>
               <input
-                onChange={handleInputChange}
+                id="FilePost"
                 className=""
                 name="profil"
-                type="text"
-                value={User.profil}
+                type="file"
+                onChange={convertTo}
                 required
               />
             </div>
@@ -185,7 +200,7 @@ export default function ProfilPage() {
         <div className="mx-auto w-full md:max-w-sm mt-5">
           <div className="flex items-center justify-between">
             {" "}
-            <label className="block">{Infos.input.passwordC.label}</label>{" "}
+            <label className="block">Comfirm password:</label>{" "}
           </div>
           <input
             onChange={handleCredentialInputChange}

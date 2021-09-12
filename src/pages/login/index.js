@@ -19,7 +19,7 @@ export default function LoginPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await sleep(500);
+    await sleep(50);
     await handleAuthentication("LOGIN", User);
   }
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
