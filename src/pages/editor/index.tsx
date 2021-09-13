@@ -220,7 +220,7 @@ export default function Publish() {
         prev[e.target.name] = e.target.value;
       }
       localStorage.setItem("qosEditorHistory", JSON.stringify(prev));
-      return prev;
+      return { ...prev };
     });
   }
   async function UpdatePost(Post: any, published: boolean) {
@@ -378,8 +378,12 @@ function RightForm({ Post, handleInputChange, Update, setPost }: any) {
       </div>
       <div className="mx-auto w-full md:max-w-sm mt-5">
         <select name="lang" onChange={handleInputChange}>
-          <option value="en">English</option>
-          <option value="fr">Français</option>
+          <option selected={Post.lang === "en"} value="en">
+            English
+          </option>
+          <option selected={Post.lang === "fr"} value="fr">
+            Français
+          </option>
         </select>
       </div>
       <div className="mx-auto w-full md:max-w-sm mt-5">

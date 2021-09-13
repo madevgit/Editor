@@ -1,5 +1,5 @@
 import axios from "axios";
-const api = false;
+const api = true;
 const baseUrl = api
   ? `https://blogeditorapi.herokuapp.com`
   : `http://localhost:8080`;
