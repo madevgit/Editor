@@ -88,29 +88,6 @@ export default function RegisterPage() {
               </div>
             </div>
             <div className="w-1/2 mx-4">
-              <div className="mx-auto w-full md:max-w-sm mt-10 flex items-center">
-                <img
-                  src={User.profil}
-                  id="UserProfil"
-                  className="h-14 w-14 p-2 mt-6 rounded-full"
-                  alt="profil"
-                />
-                <div>
-                  <label
-                    className="p-2 rounded-xl my-0 text-msm"
-                    htmlFor="profil"
-                  >
-                    Your picture Link
-                  </label>
-                  <input
-                    onChange={handleInputChange}
-                    type="text"
-                    name="profil"
-                    className=""
-                    required
-                  />
-                </div>
-              </div>
               <div className="mx-auto w-full md:max-w-sm mt-5">
                 <div className="flex items-center justify-between">
                   {" "}
@@ -137,6 +114,20 @@ export default function RegisterPage() {
                   onChange={handleInputChange}
                   className=""
                   name="password"
+                  type="password"
+                  required
+                  minLength={8}
+                />
+              </div>
+              <div className="mx-auto w-full md:max-w-sm mt-5">
+                <div className="flex items-center justify-between">
+                  {" "}
+                  <label className="block">Comfirm password :</label>{" "}
+                </div>
+                <input
+                  onChange={handleInputChange}
+                  className=""
+                  name="passwordComfirm"
                   type="password"
                   required
                   minLength={8}
