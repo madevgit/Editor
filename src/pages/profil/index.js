@@ -29,7 +29,7 @@ export default function ProfilPage() {
 
   const { handleAuthentication } = useAuthContext();
 
-  useEffect(() => { });
+  useEffect(() => {});
 
   function handleInputChange(e) {
     setUser((prev) => {
@@ -62,19 +62,14 @@ export default function ProfilPage() {
       : handleAuthentication("UPDATE", User, credential);
   }
   return (
-    <div className="w-12/12 flex max-w-screen-xl mr-4 justify-between px-4 py-4 mx-auto mt-12 rounded-xl">
+    <div className="w-12/12 flex max-w-screen-xl mr-4 justify-between px-4 py-4 mx-auto h-screen items-center rounded-xl">
       <form
         className="w-7/12 min-w-max bg-qosgray p-8 shadow-md rounded-lg"
         onSubmit={(e) => {
           handleSubmit(e, false);
         }}
       >
-        <img
-          className="h-32 rounded-full w-32   overflow-hidden block mx-auto"
-          src={User.profil}
-          alt="profil"
-        />
-        <div className="flex items-center">
+        <div className="flex">
           <div className="w-1/2 mx-4">
             <div className="mx-auto w-full md:max-w-sm mt-5">
               <label className="block">{Infos.input.firstname.label}</label>
@@ -100,6 +95,8 @@ export default function ProfilPage() {
                 placeholder={Infos.input.lastname.placeholder}
               />
             </div>
+          </div>
+          <div className="w-1/2 mx-4">
             <div className="mx-auto w-full md:max-w-sm mt-5">
               <label className="block">{Infos.input.email.label}</label>
               <input
@@ -110,22 +107,6 @@ export default function ProfilPage() {
                 required
                 value={User.email}
                 placeholder={Infos.input.email.placeholder}
-              />
-            </div>
-          </div>
-          <div className="w-1/2 mx-4">
-            <div className="mx-auto w-full md:max-w-sm mt-5">
-              <div className="flex items-center justify-between">
-                {" "}
-                <label className="block">Profil:</label>{" "}
-              </div>
-              <input
-                id="FilePost"
-                className=""
-                name="profil"
-                type="file"
-                onChange={convertTo}
-                required
               />
             </div>
             <div className="mx-auto w-full md:max-w-sm mt-5">
@@ -142,20 +123,6 @@ export default function ProfilPage() {
                 type="text"
                 value={User.poste}
                 required
-              />
-            </div>
-            <div className="mx-auto w-full md:max-w-sm mt-5">
-              <div className="flex items-center justify-between">
-                {" "}
-                <label className="block">
-                  {Infos.input.password.label}
-                </label>{" "}
-              </div>
-              <input
-                onChange={handleInputChange}
-                className=""
-                name="password"
-                type="password"
               />
             </div>
           </div>

@@ -320,71 +320,97 @@ function RightForm({ Post, handleInputChange, Update, setPost }: any) {
     reader.readAsDataURL(file);
   }
   return (
-    <div className="fixed right-4 p-4 rounded-lg z-50 shadow-md w-60 -top-52 bg-qosgray mt-80">
-      <div className="mx-auto w-full md:max-w-sm">
-        <label className="block">Title</label>
-        <input
-          value={Post.title}
-          onChange={handleInputChange}
-          className=""
-          name="title"
-          type="text"
-          required
-        />
-      </div>
-      <div className="mx-auto w-full md:max-w-sm mt-5">
-        <label className="block">Category:</label>
-        <input
-          onChange={handleInputChange}
-          type="text"
-          list="categoryList"
-          name="category"
-          required
-          value={Post.category}
-        />
-        <datalist id="categoryList">
-          <option value="engineering" />
-          <option value="marketing" />
-          <option value="company" />
-        </datalist>
-      </div>
-      <div className="mx-auto w-full md:max-w-sm mt-5">
-        <label className="block">Resume:</label>
-        <textarea
-          onChange={handleInputChange}
-          maxLength={144}
-          minLength={100}
-          name="resume"
-          placeholder="make a resume or description"
-          required
-          value={Post.resume}
-        ></textarea>
-      </div>
-      <div className="mx-auto w-full md:max-w-sm mt-5">
-        <label className="block">Poster:</label>
-        <input
-          id="FilePost"
-          type="file"
-          onChange={() => convertTo()}
-          className="border-none text-msm"
-        />
-        <input
-          onChange={handleInputChange}
-          type="hidden"
-          name="poster"
-          value={Post.poster}
-          id="HiddenInput"
-        />
-      </div>
-      <div className="mx-auto w-full md:max-w-sm mt-5">
-        <select name="lang" onChange={handleInputChange}>
-          <option selected={Post.lang === "en"} value="en">
-            English
-          </option>
-          <option selected={Post.lang === "fr"} value="fr">
-            Français
-          </option>
-        </select>
+    <div className="fixed right-4 rounded-lg p-4 px-2 z-50 shadow-md w-64 -top-52 bg-qosgray mt-80">
+      <div className="h-96 overflow-y-scroll px-2 ">
+        <div className="mx-auto w-full md:max-w-sm mb-5">
+          <label className="block">Canal:</label>
+          <select
+            name="canal"
+            required
+            value={Post.canal}
+            onChange={handleInputChange}
+            className="bg-transparent"
+          >
+            <option value="sendime">Sendime</option>
+            <option value="qoswebsite"> QOS Website </option>
+          </select>
+        </div>
+        <div className="mx-auto w-full md:max-w-sm mb-5">
+          <label className="block">Language:</label>
+          <select
+            name="lang"
+            required
+            value={Post.lang}
+            onChange={handleInputChange}
+            className="bg-transparent"
+          >
+            <option value="en">English</option>
+            <option value="fr"> Français </option>
+          </select>
+        </div>
+        <div className="mx-auto w-full md:max-w-sm">
+          <label className="block">Title</label>
+          <input
+            value={Post.title}
+            onChange={handleInputChange}
+            className=""
+            name="title"
+            type="text"
+            required
+          />
+        </div>
+        <div className="mx-auto w-full md:max-w-sm mt-5">
+          <label className="block">Category:</label>
+          <select
+            name="category"
+            required
+            value={Post.category}
+            onChange={handleInputChange}
+            className="bg-transparent"
+          >
+            <option value="engineering"> engineering</option>
+            <option value="marketing"> marketing </option>
+            <option value="company"> company</option>
+          </select>
+        </div>
+        <div className="mx-auto w-full md:max-w-sm mt-5">
+          <label className="block">Resume:</label>
+          <textarea
+            onChange={handleInputChange}
+            maxLength={144}
+            minLength={100}
+            name="resume"
+            placeholder="make a resume or description"
+            required
+            value={Post.resume}
+          ></textarea>
+        </div>
+        <div className="mx-auto w-full md:max-w-sm mt-5">
+          <label className="block">Poster:</label>
+          <input
+            id="FilePost"
+            type="file"
+            onChange={() => convertTo()}
+            className="border-none text-msm"
+          />
+          <input
+            onChange={handleInputChange}
+            type="hidden"
+            name="poster"
+            value={Post.poster}
+            id="HiddenInput"
+          />
+        </div>
+        <div className="mx-auto w-full md:max-w-sm mt-5">
+          <select name="lang" onChange={handleInputChange}>
+            <option selected={Post.lang === "en"} value="en">
+              English
+            </option>
+            <option selected={Post.lang === "fr"} value="fr">
+              Français
+            </option>
+          </select>
+        </div>
       </div>
       <div className="mx-auto w-full md:max-w-sm mt-5">
         <button className="text-mlg font-medium bg-opacity-80 h-10 bg-qosblue text-qosgray rounded-lg block p-1 mx-auto px-4">
